@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servicios;
+package servicios;
 
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
@@ -22,8 +22,8 @@ public class MoodleConsumer {
     public String getAlumnos() throws ClientErrorException {
         webTarget = client.target(BASE_URI).path("{page}")
                     .resolveTemplate("page", "server.php")
-                    .queryParam("wstoken", "df4353e926da3f515f1d35a05f48d6a1") 
-                   .queryParam("moodlewsrestformat", "json")
+                    .queryParam("wstoken", "df4353e926da3f515f1d35a05f48d6a1")
+                    .queryParam("moodlewsrestformat", "json")
                     .queryParam("wsfunction", "core_enrol_get_enrolled_users")
                     .queryParam("courseid", "1");
         String response = webTarget.request(MediaType.APPLICATION_JSON)
@@ -56,6 +56,7 @@ public class MoodleConsumer {
         String response = webTarget.request(MediaType.APPLICATION_JSON)
             .get(String.class);
             //System.out.println(response);
+            
             return response;
     }
     
